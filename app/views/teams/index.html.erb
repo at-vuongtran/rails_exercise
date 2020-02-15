@@ -7,14 +7,30 @@
 	<title>Document</title>
 </head>
 <body>
-	<h1>All users</h1>
-	<ul class="users">
-		<% @users.each do |user| %>
-			<li>
-				<%= user.name %>
-				<%= user.email %>
-			</li>
+	<h1>All teams</h1>
+	<table class="tb-team">
+		<tr>
+			<th>No</th>
+			<th>Name</th>
+			<th>Lead</th>
+			<th>Sub-Lead</th>
+		<tr>
+		<% @teams.each_with_index do |team, index| %>
+			<tr>
+				<td>
+					<%= index +1 %>
+				</td>
+				<td>
+					<%= team.name %>
+				</td>
+				<td>
+					<%= lead %>
+				</td>
+				<td>
+					<%= sub-lead %>
+				</td>
+			</tr>
 		<% end %>
-	</ul>
+	</table>
 </body>
 </html>

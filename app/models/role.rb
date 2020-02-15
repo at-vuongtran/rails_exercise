@@ -1,4 +1,4 @@
-class User_Team < ApplicationRecord
+class Role < ApplicationRecord
 	belongs_to :user_id, class_name: "User"
 	belongs_to :team_id, class_name: "Team"
 	validates :user_id, presence: true
