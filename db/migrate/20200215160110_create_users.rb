@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :email
       t.string :name
       t.string :password, null: false
-      t.integer :team_id
 
       t.timestamps
     end
