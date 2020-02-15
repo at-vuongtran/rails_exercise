@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-	has_many :users_teams, class_name:  "User_Team", foreign_key: "user_id", dependent:   :destroy
-	has_many :roling, through: :users_teams, source: :role
+	has_many :roles, class_name:  "Role", foreign_key: "user_id", dependent:   :destroy
+	has_many :roling, through: :roles, source: :role
 end
