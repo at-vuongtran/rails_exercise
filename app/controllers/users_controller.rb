@@ -7,7 +7,11 @@ class UsersController <ApplicationController
 		@user = User.find(params[:id])
 	end
 
-	def leader
+	def leaders
 		@leaders = Role.includes(:user, :team).where(role: 1)
+	end
+
+	def sub_leaders
+		@sub_leaders = Role.includes(:user, :team).where(role: 2)
 	end
 end

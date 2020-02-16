@@ -7,11 +7,15 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<h1>
-			<%= @user.name %>
-		</h1>
-		<p>
-			<%= @user.email %>
-		</p>
+		<h1>All sub-leader</h1>
+		<ul class="leaders">
+			<% @sub_leaders.each do |item| %>
+				<li>
+					<%= item.user.name %>
+					<%= item.user.email %>
+					<%= item.team.name %>
+				</li>
+			<% end %>
+		</ul>
 	</body>
 </html>
