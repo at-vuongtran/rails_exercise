@@ -9,10 +9,11 @@
 <body>
 	<h1>All leader</h1>
 	<ul class="leaders">
-		<% @users.each do |user| %>
+		<% @leaders.each do |item| %>
 			<li>
-				<%= user.name %>
-				<%= user.email %>
+				<%= item.user.name %>
+				<%= item.user.email %>
+				<%= item.team.name %>
 			</li>
 		<% end %>
 	</ul>

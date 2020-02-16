@@ -8,9 +8,6 @@ class UsersController <ApplicationController
 	end
 
 	def leader
-		tmp = User.all
-		tmp2 = []
-		tmp.each { |i| tmp2.concat(i.roles) }
-		@users = tmp2.select { |i| i.role == 1 }
+		@leaders = Role.includes(:user, :team).where(role: 1)
 	end
 end
