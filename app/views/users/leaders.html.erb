@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Document</title>
-	</head>
-	<body>
-		<h1>All leader</h1>
-		<ul class="leaders">
-			<% @leaders.each do |item| %>
-				<li>
-					<%= item.user.name %>
-					<%= item.user.email %>
-					<%= item.team.name %>
-				</li>
-			<% end %>
-		</ul>
-	</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>All leader</h1>
+    <ul class="leaders">
+      <% @leaders.each do |item| %>
+        <li>
+          <%= item.user.name %>
+          <%= item.user.email %>
+          <%= item.team.name %>
+        </li>
+      <% end %>
+    </ul>
+  </body>
 </html>
