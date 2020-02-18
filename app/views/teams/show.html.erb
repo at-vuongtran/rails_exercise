@@ -1,2 +1,34 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>
+      <%= @team.name %>
+    </h1>
+		<h3>Members</h3>
+    <% members = @team.users %>
+		<% members.each do |member| %>
+			<% if @leader && member.id == @leader.user_id %>
+				<p class="leader">
+					<%= member.name %>
+					<%= member.email %>
+				</p>
+			<% elsif @sub_leader && member.id == @sub_leader.user_id %>
+				<p class="sub-leader">
+					<%= member.name %>
+					<%= member.email %>
+				</p>
+			<% else %>
+				<p>
+					<%= member.name %>
+					<%= member.email %>
+				</p>
+			<% end %>
+		<% end %>
+  </body>
 </html>
