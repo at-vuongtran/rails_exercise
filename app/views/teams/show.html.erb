@@ -10,25 +10,11 @@
     <h1>
       <%= @team.name %>
     </h1>
-		<h3>Members</h3>
-    <% members = @team.users %>
-		<% members.each do |member| %>
-			<% if @leader && member.id == @leader.user_id %>
-				<p class="leader">
-					<%= member.name %>
-					<%= member.email %>
-				</p>
-			<% elsif @sub_leader && member.id == @sub_leader.user_id %>
-				<p class="sub-leader">
-					<%= member.name %>
-					<%= member.email %>
-				</p>
-			<% else %>
-				<p>
-					<%= member.name %>
-					<%= member.email %>
-				</p>
-			<% end %>
-		<% end %>
+		<h3> Leader: </h3>
+		<%= @leader.user.name if @leader %>
+		<h3> Sub-Leader: </h3>
+		<%= @sub_leader.user.name if @sub_leader %>
+		<h3> Total Member: </h3>
+		<%= @team.users.size %>
   </body>
 </html>
