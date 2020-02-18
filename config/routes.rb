@@ -4,7 +4,16 @@ Rails.application.routes.draw do
   # get 'users/leaders'
   # get 'users/sub-leaders'
   namespace :users do
-    resources :leaders
-    resources :sub_leaders
+    resources :leaders do
+      member do
+        get :members
+      end
+    end
+    resources :sub_leaders do
+      member do
+        get :members
+      end
+    end
   end
+  resources :teams
 end
