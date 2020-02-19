@@ -18,4 +18,10 @@ class Users::SubLeadersController < ApplicationController
     @role_sub_leader = RolesTable.find_by(name: "Sub-Leader").id
     @team = UsersTeam.find_by(user_id: params[:id], role: @role_sub_leader)
   end
+
+  def reviews
+    @role_sub_leader = RolesTable.find_by(name: "Sub-Leader").id
+    @team = UsersTeam.find_by(user_id: params[:id], role: @role_sub_leader)
+    @team ? @members = @team.team.users : @members = []
+  end
 end

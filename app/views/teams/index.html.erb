@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
-</head>
-<body>
-	<h1>All teams</h1>
-	<table class="tb-team">
-		<tr>
-			<th>No</th>
-			<th>Name</th>
-			<th>Lead</th>
-			<th>Sub-Lead</th>
-		<tr>
-		<% @teams.each_with_index do |team, index| %>
-			<tr>
-				<td>
-					<%= index +1 %>
-				</td>
-				<td>
-					<%= team.name %>
-				</td>
-				<td>
-					<%= lead %>
-				</td>
-				<td>
-					<%= sub-lead %>
-				</td>
-			</tr>
-		<% end %>
-	</table>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>All teams</h1>
+    <table class="tb-team">
+      <tr>
+        <th>No</th>
+        <th>Name</th>
+        <th>Lead</th>
+        <th>Sub-Lead</th>
+      </tr>
+      <% @teams.each_with_index do |team, index| %>
+        <% lead_role = RolesTable.find_by(name: "Leader") %>
+        <% sub_lead_role = RolesTable.find_by(name: "Sub-Leader") %>
+        <% leader = team.users_teams.find_by(role: lead_role) %>
+        <% sub_leader = team.users_teams.find_by(role: sub_lead_role) %>
+        <% if leader %>
+          <tr>
+        <% else %>
+          <tr class="no-leader">
+        <% end %>
+            <td>
+              <%= index +1 %>
+            </td>
+            <td>
+              <%= team.name %>
+            </td>
+            <td>
+              <%= leader.nil? ? "" : leader.user.name %>
+            </td>
+            <td>
+              <%= sub_leader.nil? ? "" : sub_leader.user.name %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </body>
 </html>

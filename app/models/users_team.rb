@@ -1,6 +1,6 @@
 class UsersTeam < ApplicationRecord
   belongs_to :user, class_name: "User"
-  belongs_to :team, class_name: "Team", counter_cache: true
+  belongs_to :team, class_name: "Team"
   belongs_to :roles_table
   validates :user_id, presence: true
   validates :team_id, presence: true
@@ -27,4 +27,8 @@ class UsersTeam < ApplicationRecord
   #     end
   #     puts "aaassas"
   #   end
+
+  scope :leader, -> {
+    where(:roles_table_id => RolesTable.leader)
+  }
 end
