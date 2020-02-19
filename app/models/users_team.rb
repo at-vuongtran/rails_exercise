@@ -31,4 +31,12 @@ class UsersTeam < ApplicationRecord
   scope :leader, -> {
     where(:roles_table_id => RolesTable.leader)
   }
+
+  scope :sub_leader, -> {
+    where(:roles_table_id => RolesTable.sub_leader)
+  }
+
+  scope :members, -> {
+    where(:roles_table_id => RolesTable.member)
+  }
 end
