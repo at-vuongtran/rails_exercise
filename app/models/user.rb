@@ -17,8 +17,4 @@ class User < ApplicationRecord
 
   #sub_lead review all article of members
   has_many :reviews, through: :sub_lead_get_members, source: :articles
-
-  scope :leads -> {
-    where(:teams_sub_lead != [])
-  }
 end

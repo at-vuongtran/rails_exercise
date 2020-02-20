@@ -1,0 +1,10 @@
+<h1>All leader</h1>
+<ul class="leaders">
+  <% @leaders.each do |leader| %>
+    <li>
+      <%= leader.name %>
+      <%= leader.email %>
+      <%= leader.teams_leads.pluck(:name).join(', ') %>
+    </li>
+  <% end %>
+</ul>

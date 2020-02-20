@@ -8,6 +8,10 @@ class UsersController < ApplicationController
   end
 
   def leaders
-    @leaders = UsersTeams
+    @leaders = UsersTeam.includes(:team).leader.map{ |lead| lead.user }.uniq!
+  end
+
+  def sub_leaders
+    @sub_leaders = UsersTeam.includes(:team).sub_leader.map{ |sub_lead| sub_lead.user }
   end
 end
