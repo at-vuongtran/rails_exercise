@@ -1,34 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>
-      <%= @team.name %>
-    </h1>
-		<h3>Members</h3>
-    <% members = @team.users %>
-		<% members.each do |member| %>
-			<% if @leader && member.id == @leader.user_id %>
-				<p class="leader">
-					<%= member.name %>
-					<%= member.email %>
-				</p>
-			<% elsif @sub_leader && member.id == @sub_leader.user_id %>
-				<p class="sub-leader">
-					<%= member.name %>
-					<%= member.email %>
-				</p>
-			<% else %>
-				<p>
-					<%= member.name %>
-					<%= member.email %>
-				</p>
-			<% end %>
-		<% end %>
-  </body>
-</html>
+<h1>
+    <%= @team.name %>
+</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col" class="name-user">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Position</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <% if @team.leader.nil? %>
+        <td>XXX</td>
+        <td>XXX</td>
+      <% else %>
+        <td class="name-user leader"><%= @team.leader.name %></td>
+        <td><%= @team.leader.email %></td>
+      <% end %>
+      <td>Leader</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <% if @team.sub_leader.nil? %>
+        <td>XXX</td>
+        <td>XXX</td>
+      <% else %>
+        <td class="name-user sub-leader"><%= @team.sub_leader.name %></td>
+        <td><%= @team.sub_leader.email %></td>
+      <% end %>
+      <td>Sub_leader</td>
+    </tr>
+    <% if @team.members.size > 0 %>
+      <% @team.members.each_with_index do |member, index| %>
+        <tr>
+          <th scope="row"><%= index + 3%></th>
+          <td class="name-user"><%= member.name %></td>
+          <td><%= member.email %></td>
+          <td>Member</td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

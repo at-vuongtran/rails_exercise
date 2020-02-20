@@ -2,13 +2,22 @@
 @import "bootstrap";
 
 .leader {
-	color: red;
+  color: red;
 }
 
 .sub-leader {
-	color: blue;
+  color: blue;
 }
 
 .no-leader {
-	background-color: cadetblue;
+  background-color: cadetblue;
+}
+
+.name-user {
+  text-transform: capitalize;
+}
+
+.center {
+  margin: auto;
+  
 }
