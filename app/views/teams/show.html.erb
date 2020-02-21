@@ -1,0 +1,45 @@
+<div class="full-container">
+  <div class="col-md-3 center">
+    <div class="section-top">
+      <img alt="avatar" class="img-circle text-center" src="https://portal-pro-private.s3.ap-southeast-1.amazonaws.com/uploads/images/image/file/330/3d19ec62d71519816680.png">
+      <h2 class="m-t-sm m-b-xs">Ruby</h2>
+    </div>
+    <div class="section-bottom">
+      <dl class="dl-horizontal">
+        <dt>Manager:</dt>
+          <dd>
+            <span>
+              <% if @team.leader %>
+                <%= link_to @team.leader.name, user_path(@team.leader)%>
+              <% else %>
+                Empty
+              <% end %>
+            </span>
+          </dd>
+        <dt>Sub-lead:</dt>
+          <dd>
+            <span>
+              <% if @team.sub_leader %>
+                <%= link_to @team.sub_leader.name, user_path(@team.sub_leader)%>
+              <% else %>
+                Empty
+              <% end %>
+            </span>
+          </dd>
+        <dt>Email:</dt>
+          <dd>
+            <span class="text-na">Empty</span>
+          </dd>
+        <!---->
+        <dt>Total Member:</dt>
+          <dd><span class="badge badge-primary">18</span></dd>
+      </dl>
+      <div class="small">
+        <span class="text-na">
+          <%= link_to "See all members...", "#{@team.id}/members" %>
+        </span>
+        <!---->
+      </div>
+    </div>
+  </div>
+</div>

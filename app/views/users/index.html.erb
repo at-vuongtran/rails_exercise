@@ -1,0 +1,13 @@
+<h1>All users</h1>
+<ul class="users">
+  <% @users.each do |user| %>
+    <% if user.users_teams.where(role: 1).size > 0 %>
+      <li class="leader">
+    <% else %>
+      <li>
+    <% end %>
+      <%= user.name %>
+      <%= user.email %>
+    </li>
+  <% end %>
+</ul>
